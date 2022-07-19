@@ -16,7 +16,7 @@ setuptools.setup(name='django-authgw',
       include_package_data=True,
       zip_safe=False,
       classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",

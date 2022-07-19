@@ -12,6 +12,7 @@ pip install --upgrade <path to app>/dist/django-authgw-1.0.tar.gz
 
 To Deploy:
 pip install --upgrade twine
+pip install wheel
 python setup.py sdist bdist_wheel
 python -m twine upload --repository testpypi dist/*
 python -m twine upload dist/*
