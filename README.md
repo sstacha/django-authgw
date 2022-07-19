@@ -56,7 +56,8 @@ AUTHENTICATION_BACKENDS = ['authgw.utils.ldap3.LdapBackend', 'django.contrib.aut
 ```
 Other variables that might be needed if defaults don't work for you
 ```python
-LDAP_AUTHENTICATION='LDAP' # defult = 'AD'
+LDAP_AUTHENTICATION='AD' # change to 'LDAP' to use the LdapAuthenticator instead of the ActiveDirectoryAuthenticator
+# NOTE: LDAP authentication requires an extra bind so AD is preferred if you can use it
 LDAP_PORT=None # if specified in LDAP_HOST that is used, otherwise if set this, otherwise defaults to ldap3 constructor default
 LDAP_USE_SSL=None # if specifed in LDAP_HOST that is used, otherwise if set this, otherwise defults to ldap3 constructor default
 AD_BIND_USER=None # need if searching instead of authenticating someone
