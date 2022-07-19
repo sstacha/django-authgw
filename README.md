@@ -27,10 +27,40 @@ pip install django-authgw
 ```
 Add 'authgw' to the INSTALLED_APPS list in your settings.py
 ```python
-
+INSTALLED_APPS = [
+   ...,
+   'authgw',
+]
 ```
 Add other settings based on your use case
 ### Enable settings to connect to Active Directory
 ```python
+# LDAP/AD AUTHENTICATION
+# ----
+# NOTE: using default AD auth (NTLM)
+LDAP_HOST = 'myldapdirectory.example.org'
+AD_DOMAIN = 'MYDOMAIN'
+AD_USER_ID_PREFIX = 'u:'
+LDAP_USER_SEARCH_DN = "ou=OFFICES,dc=example,dc=org"
+LDAP_USER_SEARCH_QUERY = "(&(objectclass=person)(sAMAccountName={}))"
+LDAP_AUTHENTICATED_GROUPS = ['Everyone']
+# NOTE: create the Everyone group in Django and assign permissions you want everyone to have when the authenticate
+#  Users will automatically be added to the group if they aren't there after they authenticate; Users will also 
+#  automatically be added to any matching LDAP group found in the Django application.
+# NOTE: by default, users will have the superuser flag set on creation only if they are in a DJANGO_SUPERUSERS group
+#  in ActiveDirectory; this can be changed by overriding the method on the authgw.utils.ldap3.LdapUser object and 
+#  then overriding the authgw.utils.ldap3.ActiveDirectoryAuthenticator.get_ldap_user_instance() method
 
+AUTHENTICATION_BACKENDS = ['authgw.utils.ldap3.LdapBackend', 'django.contrib.auth.backends.ModelBackend']
+
+```
+Other variables that might be needed if defaults don't work for you
+```python
+LDAP_AUTHENTICATION='LDAP' # defult = 'AD'
+LDAP_PORT=None # if specified in LDAP_HOST that is used, otherwise if set this, otherwise defaults to ldap3 constructor default
+LDAP_USE_SSL=None # if specifed in LDAP_HOST that is used, otherwise if set this, otherwise defults to ldap3 constructor default
+AD_BIND_USER=None # need if searching instead of authenticating someone
+AD_BIND_PASSWORD=None # need if searching instead of authenticating someone
+LDAP_BIND_DN=None # needed if using LDAP_AUTHENTICATION='LDAP'; ex: "CN=First Last,OU=STAFF,OU=PEOPLE,OU=ASIA,OU=OFFICES,DC=example,DC=org"
+LDAP_BIND_PASSWORD=None # needed if using LDAP_AUTHENTICATION='LDAP'
 ```
