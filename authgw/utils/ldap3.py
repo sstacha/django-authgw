@@ -352,7 +352,7 @@ class LdapBackend(BaseBackend):
                 user.is_staff = True
                 user.is_superuser = ldap_user.is_superuser()
                 user.username = username
-                user.set_password(uuid.uuid4())
+                user.set_password(str(uuid.uuid4()))
                 user.email = ldap_user.email
                 user.first_name = ldap_user.gn
                 user.last_name = ldap_user.sn
