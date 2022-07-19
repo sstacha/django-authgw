@@ -1,0 +1,20 @@
+From:
+https://docs.djangoproject.com/en/3.0/intro/reusable-apps/
+
+dont forget to increment the version number in setup.py
+NOTE: temporarily move the testapp to trash using file manager so it doesn't build! then restore after!
+NOTE: build using generic pyenv
+delete any dist or eggs
+python setup.py sdist
+
+To Test:
+pip install --upgrade <path to app>/dist/django-authgw-1.0.tar.gz
+
+To Deploy:
+pip install --upgrade twine
+python setup.py sdist bdist_wheel
+python -m twine upload --repository testpypi dist/*
+python -m twine upload dist/*
+
+username = __token__
+password = <API KEY>

@@ -1,0 +1,5 @@
+Django<4.0
+ldap3
+# requests
+# mysqlclient
+# django-import-export

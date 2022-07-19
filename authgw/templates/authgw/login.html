@@ -1,0 +1,76 @@
+{% extends "mobile.dt" %}
+
+{% block title %}{{ title|default_if_none:"Page Title" }}{% endblock %}
+{% block description %}{{ description|default_if_none:"Page Description" }}{% endblock %}
+
+{% block content %}
+<section class="vh-100" style="">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong box-shadow" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h3 class="mb-5">Mock Login</h3>
+              <form method="post" action="">
+                  {% csrf_token %}
+              <div class="form-outline mb-4">
+                  <input type="text" id="first" name="first" class="form-control form-control-lg" value="{{ first }}" />
+                  <label class="form-label" for="first">First</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                  <input type="text" id="last" name="last" class="form-control form-control-lg" value="{{ last }}" />
+                  <label class="form-label" for="last">Last</label>
+              </div>
+
+            <div class="form-outline mb-4">
+              <input type="email" id="email" name="email" class="form-control form-control-lg" value="{{ email }}" />
+              <label class="form-label" for="email">Email</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="cid" name="cid" class="form-control form-control-lg" value="{{ cid }}" />
+              <label class="form-label" for="cid">Customer ID</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="target" name="target" class="form-control form-control-lg" value="{{ target }}" />
+              <label class="form-label" for="target">Target</label>
+            </div>
+
+            <!-- Checkbox -->
+{#            <div class="form-check d-flex justify-content-start mb-4">#}
+{#              <input class="form-check-input" type="checkbox" value="" id="form1Example3" />#}
+{#              <label class="form-check-label" for="form1Example3"> Remember password </label>#}
+{#            </div>#}
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+            </form>
+            <hr class="my-4">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block js %}
+        <script>
+        // **** global template menu item functionality ****
+        /* tie in the logout button */
+        {
+            let logout_link = document.getElementById('global_login')
+            logout_link.setAttribute('disabled', '')
+            if (logout_link)
+                logout_link.addEventListener('click', (evt) => {
+                    // alert("{% url 'logout' %}?_target=" + document.location)
+                    evt.preventDefault()
+                    evt.stopPropagation()
+                    document.location="{% url 'logout' %}?_target=" + document.location
+                })
+        }
+        </script>
+{% endblock %}
