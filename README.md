@@ -69,5 +69,7 @@ Migrate to make sure database is populated and updated
 ./manage.py migrate
 ```
 Run django and login using your active directory username and password.  User will be created if it does not exist.
+
 NOTE: User must be placed in an ActiveDirectory group called DJANGO_SUPERUSERS to have the superuser flag set.
+
 NOTE: password is set to a random uuid during creation; you will need to reset it on your local machine to fall back to using the django login and password in the local database.
