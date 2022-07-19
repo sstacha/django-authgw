@@ -65,3 +65,8 @@ AD_BIND_PASSWORD=None # need if searching instead of authenticating someone
 LDAP_BIND_DN=None # needed if using LDAP_AUTHENTICATION='LDAP'; ex: "CN=First Last,OU=STAFF,OU=PEOPLE,OU=ASIA,OU=OFFICES,DC=example,DC=org"
 LDAP_BIND_PASSWORD=None # needed if using LDAP_AUTHENTICATION='LDAP'
 ```
+Migrate to make sure database is populated and updated
+```shell script
+./manage.py migrate
+```
+
