@@ -12,6 +12,8 @@ django-authgw is a django application for developers who build, manage and maint
 ## Idea
 Authentication and authorization is complicated and there are several use cases where it would be nice to have a configurable application that can work differently based on the need.
 
+First, and foremost, I am building this application to be included in all my projects that need to connect to our Active Directory instance for staff to use the admin screens.  My vision is that this may also grow to be able to be used externally by users as well.  I am thinking users can register in the same django users/groups for small apps or sites.  This could be extended to allow connecting to a centralized user store at the proxy across all applications.  And could be extended further by adding a feature to connect to something like keycloak using OpenID Connect and JWT's.  The goal is to pip install this app into any project, add some configuration settings, and have it just work.  I am shooting for as little user/group administration at the application or project level as possible.
+
 ## Use Cases
 * Developer wants to have a SQLite database and use manage.py to create users/superusers (for test scripts)
 * Developer wants to connect to Active Directory locally if on VPN for debugging just like a deployed server
