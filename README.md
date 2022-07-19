@@ -13,12 +13,12 @@ django-authgw is a django application for developers who build, manage and maint
 Authentication and authorization is complicated and there are several use cases where it would be nice to have a configurable application that can work differently based on the need.
 
 ## Use Cases
-* Developer wants to have a SQLite database and use manage.py to create users/superusers
-* Developer wants to test connecting to Active Directory if on VPN first
-* Staff attempts to log into the admin but does not exist in Django but tied to Active Directory Backend
+* Developer wants to have a SQLite database and use manage.py to create users/superusers (for test scripts)
+* Developer wants to connect to Active Directory locally if on VPN for debugging just like a deployed server
+* Staff attempts to log into the admin, does not exist in Django and is configured to use Active Directory Backend
     * Backend should create user; sync any groups
-* Staff should authenticate against AD for passwords and fall back to Django
-* Developer needs to set cookies or headers to simulate a login for testing
+* Staff should authenticate against AD for passwords and fall back to Django so one config can do all the above
+* Developer needs to set cookies or headers to simulate a login for testing; maybe... still thinking through this one
 
 ## Install Instructions
 Simply add django-authgw to your requirements.txt or pip install the app
